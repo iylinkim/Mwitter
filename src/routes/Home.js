@@ -5,19 +5,7 @@ const Home = ({userObj}) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
 
-  //   const getNweets = async () => {
-  //     const dbNweets = await dbService.collection("nweets").get();
-  //     dbNweets.forEach(document => {
-  //       const nweetObject = {
-  //         ...document.data(),
-  //         id: document.id,
-  //       };
-  //       setNweets(prev => [nweetObject, ...prev]);
-  //     });
-  //   };
-
   useEffect(() => {
-    // getNweets();
     dbService.collection("nweets").onSnapshot(snapshot => {
       const nweetArray = snapshot.docs.map(doc => ({
         id: doc.id,
