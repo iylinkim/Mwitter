@@ -14,12 +14,13 @@ const Nweet = ({ nweetObj, isOwner }) => {
   };
 
   const toggleEditing = () => setEditing((prev) => !prev);
+
   const onSubmit = async (event) => {
     event.preventDefault();
-
     await dbService.doc(`nweets/${nweetObj.id}`).update({ text: newNweet });
     setEditing(false);
   };
+
   const onChange = (event) => {
     const {
       target: { value },
@@ -32,6 +33,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
         <>
           <form onSubmit={onSubmit}>
             <input
+              autofocus
               onChange={onChange}
               type="text"
               placeholder="Edit your nweet"
