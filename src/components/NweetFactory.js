@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
+import "styles/nweetFactory.css";
 
 const NweetFactory = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
@@ -8,6 +9,9 @@ const NweetFactory = ({ userObj }) => {
   const fileRef = useRef();
 
   const onSubmit = async (event) => {
+    if (nweet === "") {
+      return;
+    }
     event.preventDefault();
     let attachmentUrl = "";
     if (attachment !== "") {
@@ -48,30 +52,50 @@ const NweetFactory = ({ userObj }) => {
     };
     reader.readAsDataURL(theFile);
   };
+
   const onAttachmentClick = () => {
-    setAttachment(null);
-    // fileRef.current.value = "";
+    setAttachment("");
+    fileRef.current.value = "";
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="factoryForm">
+      <div className="factoryInput_container">
+        <input
+          className="factoryInput__input"
+          value={nweet}
+          onChange={onChange}
+          type="text"
+          placeholder="What's on your mind?"
+          maxLength={120}
+        />
+        <input type="submit" value="&rarr;" className="factoryInput__arrow" />
+      </div>
+      <label htmlFor="attach-file" className="factoryInput__label">
+        <span>Add photos</span>
+        <i className="fas fa-plus"></i>
+      </label>
       <input
-        value={nweet}
-        onChange={onChange}
-        type="text"
-        placeholder="What's on your mind?"
-        maxLength={120}
-      />
-      <input
+        id="attach-file"
         type="file"
         accept="image/*"
         onChange={onFileChange}
         ref={fileRef}
+        style={{ opacity: 0 }}
       />
-      <input type="submit" placeholder="Nweet" value="Submit" />
+
       {attachment && (
-        <div>
-          <img src={attachment} width="50px" height="50px" />
-          <button onClick={onAttachmentClick}>Clear</button>
+        <div className="factoryForm__attachment">
+          <img
+            src={attachment}
+            alt="attachment"
+            style={{
+              backgroundImage: attachment,
+            }}
+          />
+          <div className="factoryForm__clear" onClick={onAttachmentClick}>
+            <span>Remove</span>
+            <i className="fas fa-times"></i>
+          </div>
         </div>
       )}
     </form>

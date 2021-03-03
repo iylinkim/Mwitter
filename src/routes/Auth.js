@@ -1,5 +1,7 @@
+import React from "react";
 import AuthForm from "components/AuthForm";
 import { authService, firebaseInstance } from "fbase";
+import "styles/auth.css";
 
 const Auth = () => {
   const onSocialClick = async (event) => {
@@ -12,17 +14,20 @@ const Auth = () => {
     } else if (name === "github") {
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
-    const data = await authService.signInWithPopup(provider);
+    await authService.signInWithPopup(provider);
   };
   return (
-    <div>
-      <AuthForm/>
-      <div>
-        <button onClick={onSocialClick} name="google">
+    <div className="authContainer">
+      <i className="fab fa-twitter authLogo"></i>
+      <AuthForm />
+      <div className="authBtns">
+        <button onClick={onSocialClick} name="google" className="authBtn">
           Continue with Google
+          <i className="fab fa-google"></i>
         </button>
-        <button onClick={onSocialClick} name="github">
+        <button onClick={onSocialClick} name="github" className="authBtn">
           Continue with Github
+          <i className="fab fa-github"></i>
         </button>
       </div>
     </div>

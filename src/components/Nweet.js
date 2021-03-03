@@ -1,5 +1,5 @@
-import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
+import { dbService, storageService } from "fbase";
 
 const Nweet = ({ nweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -28,37 +28,44 @@ const Nweet = ({ nweetObj, isOwner }) => {
     setNewNweet(value);
   };
   return (
-    <div>
+    <li className="nweet">
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="container nweetEdit">
             <input
-              autofocus
+              className="formInput"
               onChange={onChange}
               type="text"
               placeholder="Edit your nweet"
               value={newNweet}
+              autofocus
               required
             />
-            <input type="submit" value="Update Nweet" />
+            <input className="formBtn" type="submit" value="Update Nweet" />
           </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          <span className="formBtn cancelBtn" onClick={toggleEditing}>
+            Cancel
+          </span>
         </>
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && (
-            <img src={nweetObj.attachmentUrl} width="50px" height="50px" />
-          )}
+          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="nweet"/>}
           {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete</button>
-              <button onClick={toggleEditing}>Edit</button>
-            </>
+            <div className="nweet_actions">
+              <span onClick={onDeleteClick}>
+                <i className="far fa-trash-alt"></i>
+                delete
+              </span>
+              <span onClick={toggleEditing}>
+                <i className="far fa-edit"></i>
+                edit
+              </span>
+            </div>
           )}
         </>
       )}
-    </div>
+    </li>
   );
 };
 

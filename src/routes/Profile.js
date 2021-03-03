@@ -1,8 +1,8 @@
 import { authService, dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
-const Profile = ({ userObj , refreshUser}) => {
+import "styles/profile.css";
+const Profile = ({ userObj, refreshUser }) => {
   const history = useHistory();
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const onLogOutClick = () => {
@@ -11,12 +11,11 @@ const Profile = ({ userObj , refreshUser}) => {
   };
 
   const getMyNweets = async () => {
-    const nweets = await dbService
+    await dbService
       .collection("nweets")
       .where("creatorId", "==", userObj.uid)
       .orderBy("createdAt")
       .get();
-    console.log(nweets.docs.map((doc) => doc.data()));
   };
   useEffect(() => {
     getMyNweets();
@@ -40,18 +39,22 @@ const Profile = ({ userObj , refreshUser}) => {
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <div className="container">
+      <form onSubmit={onSubmit} className="profileForm">
         <input
+          className="formInput"
           onChange={onChange}
           type="text"
           placeholder="Display name"
           value={newDisplayName}
+          autoFocus
         />
-        <input type="submit" value="Update Profile" />
+        <input type="submit" value="Update Profile" className="formBtn" />
       </form>
-      <button onClick={onLogOutClick}>Log Out</button>
-    </>
+      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+        Log Out
+      </span>
+    </div>
   );
 };
 
