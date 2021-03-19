@@ -26,6 +26,7 @@ const Home = ({ userObj }) => {
               key={nweet.id}
               isOwner={nweet.creatorId === userObj.uid}
               nweetObj={nweet}
+              userObj={userObj}
             />
           );
         })}

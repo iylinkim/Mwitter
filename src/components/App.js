@@ -38,6 +38,7 @@ function App({ ImageInput }) {
           refreshUser={refreshUser}
           isLoggedIn={Boolean(userObj)}
           userObj={userObj}
+          setUserObj={setUserObj}
         />
       ) : (
         "Initializing..."

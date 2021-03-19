@@ -21,12 +21,16 @@ const NweetFactory = ({ userObj }) => {
       const response = await attachmentRef.putString(attachment, "data_url");
       attachmentUrl = await response.ref.getDownloadURL();
     }
+
     const nweetObj = {
-      username:userObj.displayName,
+      username: userObj.displayName,
+      photoURL: userObj.photoURL,
       text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
       attachmentUrl, //attachment가 없을 땐 빈 문자열을 가짐!
+      like: 0,
+      liked_users: [],
     };
     await dbService.collection("nweets").add(nweetObj);
     setNweet("");

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import "styles/nweet.css";
 
-const Nweet = ({ nweetObj, isOwner }) => {
+const Nweet = ({ nweetObj, userObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newNweet, setNewNweet] = useState(nweetObj.text);
   const onDeleteClick = async () => {
@@ -29,6 +29,15 @@ const Nweet = ({ nweetObj, isOwner }) => {
     setNewNweet(value);
   };
 
+  const handleLike = () => {
+    if (!nweetObj.liked_users.includes(userObj.uid)) {
+      // like 버튼을 누르지 않았음
+      dbService.doc(`nweets/${nweetObj.id}`).update({
+        like: nweetObj.like+=1,
+        liked_users: [...nweetObj.liked_users, userObj.uid],
+      });
+    }
+  };
   return (
     <li className="nweet">
       {editing ? (
@@ -51,10 +60,23 @@ const Nweet = ({ nweetObj, isOwner }) => {
         </>
       ) : (
         <>
-          <p className='username'>{nweetObj.username}</p>
-          <p className='date'>{new Date(nweetObj.createdAt).toLocaleDateString()}</p>
+          <div className="user">
+            <p className="user_photo">
+              <img src={nweetObj.photoURL} alt={nweetObj.username} />
+            </p>
+            <p className="user_name">{nweetObj.username}</p>
+          </div>
+          <p className="date">
+            {new Date(nweetObj.createdAt).toLocaleDateString()}
+          </p>
           <h4>{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="nweet"/>}
+          {nweetObj.attachmentUrl && (
+            <img src={nweetObj.attachmentUrl} alt="nweet" />
+          )}
+          <p className="like" onClick={handleLike}>
+            <i className="far fa-heart"></i>
+            {nweetObj.like}
+          </p>
           {isOwner && (
             <div className="nweet_actions">
               <span onClick={onDeleteClick}>

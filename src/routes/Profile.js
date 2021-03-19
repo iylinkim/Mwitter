@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "styles/profile.css";
 
-const Profile = ({ ImageInput, userObj, refreshUser }) => {
+const Profile = ({ ImageInput, userObj, setUserObj, refreshUser }) => {
   const history = useHistory();
   const [newUserObj, setNewUserObj] = useState({
     displayName: userObj.displayName,
@@ -31,6 +31,7 @@ const Profile = ({ ImageInput, userObj, refreshUser }) => {
       target: { value },
     } = event;
     setNewUserObj((data) => ({ ...data, displayName: value }));
+    // setUserObj((data) => ({ ...data, displayName: value }));
   };
 
   const onSubmit = async (event) => {
@@ -56,7 +57,7 @@ const Profile = ({ ImageInput, userObj, refreshUser }) => {
             alt={`${userObj.displayName}'s profile`}
           />
         </p>
-        <ImageInput setNewUserObj={setNewUserObj}/>
+        <ImageInput setNewUserObj={setNewUserObj} />
         <input
           className="formInput"
           onChange={onChange}

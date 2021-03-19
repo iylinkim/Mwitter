@@ -6,7 +6,7 @@ import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 import "styles/router.css";
 
-const AppRouter = ({ ImageInput, isLoggedIn, userObj, refreshUser }) => {
+const AppRouter = ({ ImageInput, isLoggedIn, userObj,setUserObj, refreshUser }) => {
   return (
     <Router>
       {isLoggedIn && <Navigation userObj={userObj} />}
@@ -21,6 +21,7 @@ const AppRouter = ({ ImageInput, isLoggedIn, userObj, refreshUser }) => {
                 <Profile
                   ImageInput={ImageInput}
                   userObj={userObj}
+                  setUserObj={setUserObj}
                   refreshUser={refreshUser}
                 />
               </Route>
