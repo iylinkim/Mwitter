@@ -1,0 +1,12 @@
+.each_comment{
+    display:flex;
+    padding:5px 0;
+    text-align:left;
+    border-bottom:1px solid #efefef;
+    font-size:0.8rem;
+}
+
+.comment_username{
+    font-weight:700;
+    padding-right:10px;
+}

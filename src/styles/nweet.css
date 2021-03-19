@@ -1,15 +1,19 @@
-.user{
+.nweet_user{
     display:flex;
     align-items:center;
+    padding-bottom:10px;
 }
 
 .user_photo{
-    width:35px;
-    height:35px;
+    width:25px;
+    height:25px;
+    margin-right:3px;
+    border:1px solid #fff;
     border-radius: 50%;
     overflow:hidden;
     display:flex;
     justify-content: center;
+    box-shadow:0 0 5px rgba(0,0,0,0.2);
 }
 .user_photo > img{
     width:100%;
@@ -19,6 +23,7 @@
     padding-left:5px;
     color:#444;
     font-size:0.9rem;
+    font-weight:700;
 }
 
 .date{
@@ -28,3 +33,37 @@
     color:#777;
     font-size:0.4rem;
 }
+
+.like_and_comment{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: flex-end;
+    text-align:right;
+}
+
+.like{
+    padding-right:5px;
+    color:#da5a6f;
+}
+
+.like_number{
+    padding-left:2px;
+    color:#000;
+}
+
+.nweet_actions{
+    padding-top:20px;
+    font-size:0.6rem;
+    text-align:right;
+    color:#555;
+}
+
+.actions_icon{
+    padding-left:5px;
+    cursor:pointer;
+}
+
+.delete_icon, .edit_icon{
+    padding-right:2px;
+}
+

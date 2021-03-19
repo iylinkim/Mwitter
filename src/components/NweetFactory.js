@@ -31,6 +31,7 @@ const NweetFactory = ({ userObj }) => {
       attachmentUrl, //attachment가 없을 땐 빈 문자열을 가짐!
       like: 0,
       liked_users: [],
+      comments:[]
     };
     await dbService.collection("nweets").add(nweetObj);
     setNweet("");

@@ -1,0 +1,33 @@
+.comment_input{
+    text-indent: 10px;
+    line-height:20px;
+    border-radius: 5px;
+    background-color:#efefef;
+}
+
+.comments_box{
+    width:100%;
+    margin-top:15px;
+}
+
+.add_comment{
+    display:flex;
+    justify-content: space-between;
+}
+
+.comment_input{
+    width:87%;
+    text-align:left;
+}
+.comment_submit{
+    width:11%;
+    background-color:rgba(122, 209, 192, 0.7);
+    border-radius:7px;
+    font-size:0.7rem;
+    text-align:center;
+    cursor:pointer;
+}
+
+.comments_list{
+    padding-top:10px;
+}

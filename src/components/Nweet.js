@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
+import Comments from "./Comments";
 import "styles/nweet.css";
 
 const Nweet = ({ nweetObj, userObj, isOwner }) => {
@@ -31,13 +32,14 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
 
   const handleLike = () => {
     if (!nweetObj.liked_users.includes(userObj.uid)) {
-      // like 버튼을 누르지 않았음
+      // like 버튼을 누르지 않았을 때
       dbService.doc(`nweets/${nweetObj.id}`).update({
-        like: nweetObj.like+=1,
+        like: (nweetObj.like += 1),
         liked_users: [...nweetObj.liked_users, userObj.uid],
       });
     }
   };
+
   return (
     <li className="nweet">
       {editing ? (
@@ -60,7 +62,7 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
         </>
       ) : (
         <>
-          <div className="user">
+          <div className="nweet_user">
             <p className="user_photo">
               <img src={nweetObj.photoURL} alt={nweetObj.username} />
             </p>
@@ -73,18 +75,21 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
           {nweetObj.attachmentUrl && (
             <img src={nweetObj.attachmentUrl} alt="nweet" />
           )}
-          <p className="like" onClick={handleLike}>
-            <i className="far fa-heart"></i>
-            {nweetObj.like}
-          </p>
+          <div class="like_and_comment">
+            <p className="like" onClick={handleLike}>
+              <i className="fas fa-heart"></i>
+              <span class="like_number">{nweetObj.like}</span>
+            </p>
+            <Comments nweetObj={nweetObj} userObj={userObj} />
+          </div>
           {isOwner && (
             <div className="nweet_actions">
-              <span onClick={onDeleteClick}>
-                <i className="far fa-trash-alt"></i>
+              <span className="actions_icon delete" onClick={onDeleteClick}>
+                <i className="far fa-trash-alt delete_icon"></i>
                 delete
               </span>
-              <span onClick={toggleEditing}>
-                <i className="far fa-edit"></i>
+              <span className="actions_icon edit" onClick={toggleEditing}>
+                <i className="far fa-edit edit_icon"></i>
                 edit
               </span>
             </div>
