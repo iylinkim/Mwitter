@@ -75,10 +75,10 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
           {nweetObj.attachmentUrl && (
             <img src={nweetObj.attachmentUrl} alt="nweet" />
           )}
-          <div class="like_and_comment">
+          <div className="like_and_comment">
             <p className="like" onClick={handleLike}>
               <i className="fas fa-heart"></i>
-              <span class="like_number">{nweetObj.like}</span>
+              <span className="like_number">{nweetObj.like}</span>
             </p>
             <Comments nweetObj={nweetObj} userObj={userObj} />
           </div>

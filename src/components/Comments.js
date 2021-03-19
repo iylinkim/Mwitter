@@ -6,14 +6,25 @@ import "styles/comments.css";
 const Comments = ({ nweetObj, userObj }) => {
   const [isComments, setIsComments] = useState(false);
   const commentRef = useRef();
-  const handleComment = () => setIsComments((state) => !state);
+  const handleComment = () => {
+    setIsComments((state) => !state);
+  };
   const onSubmit = () => {
     dbService.doc(`nweets/${nweetObj.id}`).update({
-      comments: [...nweetObj.comments, commentRef.current.value],
+      comments: [
+        ...nweetObj.comments,
+        {
+          displayName: userObj.displayName,
+          comment: commentRef.current.value,
+        },
+      ],
     });
-  };
-  //   commentRef.current.value = "";
 
+    commentRef.current.value = "";
+  };
+  console.log(
+    Object.keys(nweetObj.comments).map((key) => nweetObj.comments[key])
+  );
   return (
     <>
       <p className="comment_icon" onClick={handleComment}>
@@ -33,9 +44,13 @@ const Comments = ({ nweetObj, userObj }) => {
             </form>
             <ul className="comments_list">
               {nweetObj.comments &&
-                nweetObj.comments.map((each_comment) => {
+                Object.keys(nweetObj.comments).map((key) => {
                   return (
-                    <Comment each_comment={each_comment} userObj={userObj} />
+                    <Comment
+                      key={key}
+                      each_comment={nweetObj.comments[key]}
+                      userObj={userObj}
+                    />
                   );
                 })}
             </ul>
