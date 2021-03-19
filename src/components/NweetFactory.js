@@ -21,8 +21,8 @@ const NweetFactory = ({ userObj }) => {
       const response = await attachmentRef.putString(attachment, "data_url");
       attachmentUrl = await response.ref.getDownloadURL();
     }
-
     const nweetObj = {
+      username:userObj.displayName,
       text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,

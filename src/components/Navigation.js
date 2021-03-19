@@ -8,7 +8,8 @@ const Navigation = ({ userObj }) => {
       <ul className="navigation">
         <li className="home">
           <Link to="/">
-            <i className="fab fa-twitter twitter"></i>
+          <i className="fas fa-hippo hippo"></i>
+          <span className="homeText">Home</span>
           </Link>
         </li>
         <li className="profile">

@@ -1,3 +1,23 @@
-.formBtn{
-    margin-top:10px;
+.profileForm {
+  position: relative;
+}
+
+.profile_photo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  position:relative;
+  box-shadow: 0 0 10px rgba(62,62,62,0.45);
+}
+
+.profile_photo > img {
+  width: 100%;
+}
+
+.formBtn {
+  margin-top: 10px;
 }

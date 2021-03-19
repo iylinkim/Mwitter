@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
+import "styles/nweet.css";
 
 const Nweet = ({ nweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -27,6 +28,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     } = event;
     setNewNweet(value);
   };
+
   return (
     <li className="nweet">
       {editing ? (
@@ -38,7 +40,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
               type="text"
               placeholder="Edit your nweet"
               value={newNweet}
-              autofocus
+              autoFocus
               required
             />
             <input className="formBtn" type="submit" value="Update Nweet" />
@@ -49,6 +51,8 @@ const Nweet = ({ nweetObj, isOwner }) => {
         </>
       ) : (
         <>
+          <p className='username'>{nweetObj.username}</p>
+          <p className='date'>{new Date(nweetObj.createdAt).toLocaleDateString()}</p>
           <h4>{nweetObj.text}</h4>
           {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="nweet"/>}
           {isOwner && (

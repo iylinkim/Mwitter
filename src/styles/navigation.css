@@ -14,13 +14,19 @@
   flex-direction: column;
   align-items: center;
   font-size: 12px;
+  text-align: center;
 }
 
-.profileText{
-    margin-top:10px;
+.homeText,
+.profileText {
+  display: block;
+  margin-top: 10px;
+  font-size:0.7rem;
 }
 
 /* icon */
-.twitter, .user{
-    color:#04aaff;
+.hippo,
+.user {
+  color: #7ad1c0;
+  font-size: 1.5rem;
 }
