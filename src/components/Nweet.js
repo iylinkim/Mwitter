@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import Comments from "./Comments";
+import { Link } from "react-router-dom";
 import "styles/nweet.css";
+import User from "./User";
 
 const Nweet = ({ nweetObj, userObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -62,12 +64,18 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
         </>
       ) : (
         <>
-          <div className="nweet_user">
-            <p className="user_photo">
-              <img src={nweetObj.photoURL} alt={nweetObj.username} />
-            </p>
-            <p className="user_name">{nweetObj.username}</p>
-          </div>
+          <Link
+            to={{
+              pathname: "/account",
+              state: {
+                userId: nweetObj.creatorId,
+                userName: nweetObj.username,
+                userPhoto: nweetObj.photoURL
+              },
+            }}
+          >
+            <User nweetObj={nweetObj}/>
+          </Link>
           <p className="date">
             {new Date(nweetObj.createdAt).toLocaleDateString()}
           </p>

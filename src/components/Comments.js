@@ -22,9 +22,7 @@ const Comments = ({ nweetObj, userObj }) => {
 
     commentRef.current.value = "";
   };
-  console.log(
-    Object.keys(nweetObj.comments).map((key) => nweetObj.comments[key])
-  );
+ 
   return (
     <>
       <p className="comment_icon" onClick={handleComment}>

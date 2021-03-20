@@ -1,0 +1,11 @@
+.post{
+    padding:20px;
+    border-top:2px solid #efefef;
+    position:relative;
+    display:flex;
+    flex-direction: column;
+}
+
+.post > .post_img{
+   padding:10px 0;
+}
