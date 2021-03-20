@@ -6,14 +6,16 @@ import "styles/auth.css";
 const Auth = ({darkMode}) => {
   const onSocialClick = async (event) => {
     const {
-      target: { name },
+      currentTarget: { name },
     } = event;
+
     let provider;
     if (name === "google") {
       provider = new firebaseInstance.auth.GoogleAuthProvider();
     } else if (name === "github") {
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
+    
     await authService.signInWithPopup(provider);
   };
   return (

@@ -1,23 +1,5 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
-/* dark mode */
-body.dark {
-  background-color: #000;
-  color: #efefef;
-}
 
-.authInput.dark{
-  background-color:#1f1e1e;
-  color:#efefef;
-}
-
-.authBtn.dark{
-  background-color:#555;
-  color:#efefef;
-}
-
-.authBtn.dark > .fa-google{
-  color:rgba(40, 121, 226, 0.74);
-}
 
 * {
   box-sizing: border-box;
@@ -25,7 +7,6 @@ body.dark {
 
 input {
   all: unset;
-  box-sizing: border-box;
   appearance: none;
   box-sizing: border-box;
 }
@@ -310,4 +291,26 @@ form {
   display: block;
   font-size: 12px;
   text-decoration: underline;
+}
+
+
+
+/* dark mode */
+body.dark {
+  background-color: #000;
+  color: #efefef;
+}
+
+.authInput.dark{
+  background-color:#1f1e1e;
+  color:#efefef;
+}
+
+.authBtn.dark{
+  background-color:#555;
+  color:#efefef;
+}
+
+.authBtn.dark > .fa-google{
+  color:rgba(40, 121, 226, 0.74);
 }
