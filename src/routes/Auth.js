@@ -3,7 +3,7 @@ import AuthForm from "components/AuthForm";
 import { authService, firebaseInstance } from "fbase";
 import "styles/auth.css";
 
-const Auth = () => {
+const Auth = ({darkMode}) => {
   const onSocialClick = async (event) => {
     const {
       target: { name },
@@ -18,16 +18,16 @@ const Auth = () => {
   };
   return (
     <div className="authContainer">
-      <i className="fab fa-twitter authLogo"></i>
-      <AuthForm />
+      <i className="fas fa-hippo hippo authLogo"></i>
+      <AuthForm darkMode={darkMode}/>
       <div className="authBtns">
-        <button onClick={onSocialClick} name="google" className="authBtn">
-          Continue with Google
+        <button onClick={onSocialClick} name="google" className={darkMode? "authBtn dark" : "authBtn"}>
           <i className="fab fa-google"></i>
+          <span className="authBtn_text">Sign In with Google</span>
         </button>
-        <button onClick={onSocialClick} name="github" className="authBtn">
-          Continue with Github
+        <button onClick={onSocialClick} name="github" className={darkMode? "authBtn dark" : "authBtn"}>
           <i className="fab fa-github"></i>
+          <span className="authBtn_text">Sign In with Github</span>
         </button>
       </div>
     </div>

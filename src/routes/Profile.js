@@ -31,7 +31,6 @@ const Profile = ({ ImageInput, userObj, setUserObj, refreshUser }) => {
       target: { value },
     } = event;
     setNewUserObj((data) => ({ ...data, displayName: value }));
-    // setUserObj((data) => ({ ...data, displayName: value }));
   };
 
   const onSubmit = async (event) => {

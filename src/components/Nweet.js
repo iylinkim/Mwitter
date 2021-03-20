@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "styles/nweet.css";
 import User from "./User";
 
-const Nweet = ({ nweetObj, userObj, isOwner }) => {
+const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
   const [editing, setEditing] = useState(false);
   const [newNweet, setNewNweet] = useState(nweetObj.text);
   const onDeleteClick = async () => {
@@ -43,7 +43,7 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
   };
 
   return (
-    <li className="nweet">
+    <li className={darkMode ? "nweet dark" : "nweet"}>
       {editing ? (
         <>
           <form onSubmit={onSubmit} className="container nweetEdit">
@@ -56,11 +56,23 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
               autoFocus
               required
             />
-            <input className="formBtn" type="submit" value="Update Nweet" />
+            <p className="formBtn_icon">
+              <input
+                className=" formBtn_text formBtn_text_update"
+                type="submit"
+                value="Update Nweet"
+              />
+              <span className="editing_icon update">
+                <i className="fas fa-pen"></i>
+              </span>
+            </p>
           </form>
-          <span className="formBtn cancelBtn" onClick={toggleEditing}>
-            Cancel
-          </span>
+          <p className=" cancelBtn formBtn_icon" onClick={toggleEditing}>
+            <span className="formBtn_text formBtn_text_cancel">Cancel</span>
+            <span className="editing_icon cancel">
+              <i className="fas fa-window-close"></i>
+            </span>
+          </p>
         </>
       ) : (
         <>
@@ -70,11 +82,11 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
               state: {
                 userId: nweetObj.creatorId,
                 userName: nweetObj.username,
-                userPhoto: nweetObj.photoURL
+                userPhoto: nweetObj.photoURL,
               },
             }}
           >
-            <User nweetObj={nweetObj}/>
+            <User nweetObj={nweetObj} />
           </Link>
           <p className="date">
             {new Date(nweetObj.createdAt).toLocaleDateString()}

@@ -27,7 +27,8 @@ const ImageFileInput = ({ imageUploader, setNewUserObj, darkTheme }) => {
         onChange={onFileChange}
       />
       <button className="file_button" onClick={onClick}>
-        Edit Profile Image
+        Edit
+        <br /> Profile Image
       </button>
     </div>
   );

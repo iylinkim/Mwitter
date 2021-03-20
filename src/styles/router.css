@@ -6,3 +6,26 @@
     display:flex;
     justify-content: center;
 }
+
+.mode{
+    padding:5px;
+    position:absolute;
+    right:15px;
+    top:15px;
+    border:none;
+    outline:none;
+    border-radius: 5px;
+    font-size:0.6rem;
+    background-color:#333;
+    color:#fff;
+    transition:all 0.3s ease;
+    cursor:pointer;
+    box-shadow:0 0 5px rgba(0,0,0,0.7)
+}
+
+/* dark mode */
+.mode.dark{
+    background-color:#efefef;
+    color:#000;
+    box-shadow:0 0 10px rgba(255,255,255,0.7)
+}

@@ -4,7 +4,7 @@ import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
 import "styles/home.css";
 
-const Home = ({ userObj }) => {
+const Home = ({ userObj, darkMode }) => {
   const [nweets, setNweets] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Home = ({ userObj }) => {
   }, []);
   return (
     <div className="container">
-      <NweetFactory userObj={userObj} />
+      <NweetFactory userObj={userObj} darkMode={darkMode}/>
       <ul className="nweets">
         {nweets.map((nweet) => {
           return (
@@ -27,6 +27,7 @@ const Home = ({ userObj }) => {
               isOwner={nweet.creatorId === userObj.uid}
               nweetObj={nweet}
               userObj={userObj}
+              darkMode={darkMode}
             />
           );
         })}

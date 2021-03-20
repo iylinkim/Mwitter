@@ -1,4 +1,23 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+/* dark mode */
+body.dark {
+  background-color: #000;
+  color: #efefef;
+}
+
+.authInput.dark{
+  background-color:#1f1e1e;
+  color:#efefef;
+}
+
+.authBtn.dark{
+  background-color:#555;
+  color:#efefef;
+}
+
+.authBtn.dark > .fa-google{
+  color:rgba(40, 121, 226, 0.74);
+}
 
 * {
   box-sizing: border-box;
@@ -12,11 +31,9 @@ input {
 }
 
 body {
-  /* background-color: black; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
-  /* color: white; */
 }
 
 button {
@@ -56,19 +73,20 @@ form {
 }
 
 .formBtn {
-  cursor: pointer;
   width: 100%;
   padding: 7px 20px;
+  margin-top: 10px;
   text-align: center;
   color: white;
   border-radius: 20px;
-  background-color: #7ad1c0;
+  background-color: rgba(122, 209, 192, 0.7);
+  border-radius: 20px;
   cursor: pointer;
 }
 
 .cancelBtn {
   cursor: pointer;
-  background-color: tomato;
+  background-color: rgba(4, 121, 255, 0.7);
 }
 
 /* Profile Page */
@@ -107,8 +125,7 @@ form {
 .factoryInput__input {
   flex-grow: 1;
   height: 40px;
-  padding: 0px 20px;
-  /* color: white; */
+  padding: 0px 30px;
   border: 1px solid #7ad1c0;
   border-radius: 20px;
   font-weight: 500;
@@ -144,9 +161,8 @@ form {
 }
 
 .factoryForm__attachment img {
-  height: 80px;
-  width: 80px;
-  border-radius: 40px;
+  width: 150px;
+  padding-bottom: 5px;
 }
 
 .factoryForm__clear {
@@ -164,8 +180,9 @@ form {
 
 .nweetEdit .formBtn {
   cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  /* margin-top: 15px;
+  margin-bottom: 5px; */
+  position: relative;
 }
 
 .nweet {
@@ -179,7 +196,7 @@ form {
   display: flex;
   flex-direction: column;
   color: rgba(0, 0, 0, 0.8);
-  box-shadow:0 0 10px rgba(62, 62, 62, 0.25);
+  box-shadow: 0 0 10px rgba(62, 62, 62, 0.25);
 }
 
 .nweet h4 {
@@ -228,15 +245,28 @@ form {
 }
 
 .authBtn {
+  width:49%;
   cursor: pointer;
   border-radius: 20px;
   border: none;
   padding: 10px 0px;
   font-size: 12px;
   text-align: center;
-  width: 150px;
-  background: white;
+  background: #efefef;
   cursor: pointer;
+}
+
+.authBtn_text{
+  padding-left:5px;
+}
+
+.fa-google{
+  font-size:14px;
+  color:rgba(40, 121, 226, 0.74);
+}
+.fa-github{
+  font-size:14px;
+  color:rgba(0, 0, 0, 0.74);
 }
 
 /* AuthForm */
@@ -246,7 +276,7 @@ form {
   width: 100%;
   padding: 10px;
   border-radius: 30px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #dad6d6;
   margin-bottom: 10px;
   font-size: 12px;
   color: black;

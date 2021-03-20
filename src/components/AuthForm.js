@@ -1,7 +1,7 @@
 import { authService } from "fbase";
 import React, { useState } from "react";
 
-const AuthForm = (props) => {
+const AuthForm = ({darkMode}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
@@ -48,7 +48,7 @@ const AuthForm = (props) => {
           required
           value={email}
           onChange={onChange}
-          className="authInput"
+          className={darkMode? "authInput dark" : "authInput"}
         />
         <input
           name="password"
@@ -57,7 +57,7 @@ const AuthForm = (props) => {
           required
           value={password}
           onChange={onChange}
-          className="authInput"
+          className={darkMode? "authInput dark" : "authInput"}
         />
         <input
           className="authInput authSubmit"

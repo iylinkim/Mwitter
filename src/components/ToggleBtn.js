@@ -37,7 +37,7 @@ const ToggleBtn = ({ darkMode, setDarkMode }) => {
       }
     }, []);
   return (
-    <button className="mode" onClick={onClick}>{darkMode ? "Light Mode" : "Dark Mode"}</button>
+    <button className={darkMode ? "mode dark" : "mode"} onClick={onClick}>{darkMode ? "Light Mode" : "Dark Mode"}</button>
   );
 };
 

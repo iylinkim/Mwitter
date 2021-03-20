@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
@@ -16,16 +16,26 @@ const AppRouter = ({
   refreshUser,
 }) => {
   const [darkMode, setDarkMode] = useState(false);
+  const routerRef = useRef();
+
+  useEffect(() => {
+    const body = routerRef.current.parentElement.parentElement;
+    if (darkMode) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+  }, [darkMode]);
   return (
     <Router>
       {isLoggedIn && <Navigation userObj={userObj} />}
-      <ToggleBtn darkMode={darkMode} setDarkMode={setDarkMode}/>
+      <ToggleBtn darkMode={darkMode} setDarkMode={setDarkMode} />
       <Switch>
         <>
           {isLoggedIn ? (
-            <div className="router_loggedIn">
+            <div className="router_loggedIn" ref={routerRef}>
               <Route exact path="/">
-                <Home userObj={userObj} />
+                <Home darkMode={darkMode} userObj={userObj} />
               </Route>
               <Route exact path="/profile">
                 <Profile
@@ -40,12 +50,11 @@ const AppRouter = ({
               </Route>
             </div>
           ) : (
-            <>
+            <div ref={routerRef}>
               <Route exact path="/">
-                <Auth />
+                <Auth darkMode={darkMode}/>
               </Route>
-              {/* <Redirect from='*' to='/' />  */}
-            </>
+            </div>
           )}
         </>
       </Switch>
