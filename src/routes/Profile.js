@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "styles/profile.css";
 
+
 const Profile = ({ ImageInput, userObj, setUserObj, refreshUser }) => {
   const history = useHistory();
   const [newUserObj, setNewUserObj] = useState({
@@ -52,9 +53,10 @@ const Profile = ({ ImageInput, userObj, setUserObj, refreshUser }) => {
       <form onSubmit={onSubmit} className="profileForm">
         <p className="profile_photo">
           <img
-            src={newUserObj.photoURL}
+            src={newUserObj.photoURL ? newUserObj.photoURL : "https://www.edmundsgovtech.com/wp-content/uploads/2020/01/default-picture_0_0.png"}
             alt={`${userObj.displayName}'s profile`}
           />
+
         </p>
         <ImageInput setNewUserObj={setNewUserObj} />
         <input

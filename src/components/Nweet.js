@@ -91,7 +91,7 @@ const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
           <p className="date">
             {new Date(nweetObj.createdAt).toLocaleDateString()}
           </p>
-          <h4>{nweetObj.text}</h4>
+          <h4 className="nweet_content">{nweetObj.text}</h4>
           {nweetObj.attachmentUrl && (
             <img src={nweetObj.attachmentUrl} alt="nweet" />
           )}

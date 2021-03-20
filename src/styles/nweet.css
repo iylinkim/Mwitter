@@ -26,6 +26,10 @@
   font-weight: 700;
 }
 
+.nweet_content{
+    padding:10px 0;
+}
+
 .date {
   position: absolute;
   right: 20px;
