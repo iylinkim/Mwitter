@@ -3,16 +3,16 @@ import { useRef, useState } from "react";
 import Comment from "./Comment";
 import "styles/comments.css";
 
-const Comments = ({ nweetObj, userObj }) => {
+const Comments = ({ mweetObj, userObj }) => {
   const [isComments, setIsComments] = useState(false);
   const commentRef = useRef();
   const handleComment = () => {
     setIsComments((state) => !state);
   };
   const onSubmit = () => {
-    dbService.doc(`nweets/${nweetObj.id}`).update({
+    dbService.doc(`mweets/${mweetObj.id}`).update({
       comments: [
-        ...nweetObj.comments,
+        ...mweetObj.comments,
         {
           displayName: userObj.displayName,
           comment: commentRef.current.value,
@@ -22,7 +22,7 @@ const Comments = ({ nweetObj, userObj }) => {
 
     commentRef.current.value = "";
   };
- 
+
   return (
     <>
       <p className="comment_icon" onClick={handleComment}>
@@ -41,12 +41,12 @@ const Comments = ({ nweetObj, userObj }) => {
               <input className="comment_submit" type="submit" value="Add" />
             </form>
             <ul className="comments_list">
-              {nweetObj.comments &&
-                Object.keys(nweetObj.comments).map((key) => {
+              {mweetObj.comments &&
+                Object.keys(mweetObj.comments).map((key) => {
                   return (
                     <Comment
                       key={key}
-                      each_comment={nweetObj.comments[key]}
+                      each_comment={mweetObj.comments[key]}
                       userObj={userObj}
                     />
                   );

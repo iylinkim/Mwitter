@@ -31,7 +31,7 @@ form {
   width: 100%;
 }
 
-.nweet-input::placeholder {
+.mweet-input::placeholder {
   color: white;
   opacity: 0.9;
 }
@@ -157,16 +157,16 @@ form {
   font-size: 12px;
 }
 
-/* Nweet */
+/* Mweet */
 
-.nweetEdit .formBtn {
+.mweetEdit .formBtn {
   cursor: pointer;
   /* margin-top: 15px;
   margin-bottom: 5px; */
   position: relative;
 }
 
-.nweet {
+.mweet {
   margin-bottom: 35px;
   background-color: white;
   width: 100%;
@@ -180,11 +180,11 @@ form {
   box-shadow: 0 0 10px rgba(62, 62, 62, 0.25);
 }
 
-.nweet h4 {
+.mweet h4 {
   font-size: 14px;
 }
 
-.nweet img {
+.mweet img {
   /* right: -10px;
   top: 20px;
   position: absolute;
@@ -194,17 +194,17 @@ form {
   /* margin-top: 10px; */
 }
 
-.nweet__actions {
+.mweet__actions {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-.nweet__actions span {
+.mweet__actions span {
   cursor: pointer;
 }
 
-.nweet__actions span:first-child {
+.mweet__actions span:first-child {
   margin-right: 10px;
 }
 

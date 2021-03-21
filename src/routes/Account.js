@@ -3,7 +3,7 @@ import User from "components/User";
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import 'styles/account.css';
+import "styles/account.css";
 
 const Account = () => {
   const history = useHistory();
@@ -18,7 +18,7 @@ const Account = () => {
     const getUserPost = async () => {
       if (history.location.state) {
         const data = await dbService
-          .collection("nweets")
+          .collection("mweets")
           .where("creatorId", "==", history.location.state.userId)
           .orderBy("createdAt")
           .get();

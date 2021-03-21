@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
-import "styles/nweetFactory.css";
+import "styles/mweetFactory.css";
 
-const NweetFactory = ({ userObj }) => {
-  const [nweet, setNweet] = useState("");
+const MweetFactory = ({ userObj }) => {
+  const [mweet, setMweet] = useState("");
   const [attachment, setAttachment] = useState("");
   const fileRef = useRef();
 
   const onSubmit = async (event) => {
-    if (nweet === "") {
+    if (mweet === "") {
       return;
     }
     event.preventDefault();
@@ -22,19 +22,19 @@ const NweetFactory = ({ userObj }) => {
       attachmentUrl = await response.ref.getDownloadURL();
     }
 
-    const nweetObj = {
+    const mweetObj = {
       username: userObj.displayName,
       photoURL: userObj.photoURL,
-      text: nweet,
+      text: mweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
       attachmentUrl, //attachment가 없을 땐 빈 문자열을 가짐!
       like: 0,
       liked_users: [],
-      comments:[]
+      comments: [],
     };
-    await dbService.collection("nweets").add(nweetObj);
-    setNweet("");
+    await dbService.collection("mweets").add(mweetObj);
+    setMweet("");
     setAttachment("");
   };
 
@@ -43,7 +43,7 @@ const NweetFactory = ({ userObj }) => {
       target: { value },
     } = event;
 
-    setNweet(value);
+    setMweet(value);
   };
 
   const onFileChange = (event) => {
@@ -67,7 +67,7 @@ const NweetFactory = ({ userObj }) => {
       <div className="factoryInput_container">
         <input
           className="factoryInput__input"
-          value={nweet}
+          value={mweet}
           onChange={onChange}
           type="text"
           placeholder="What's on your mind?"
@@ -107,4 +107,4 @@ const NweetFactory = ({ userObj }) => {
   );
 };
 
-export default NweetFactory;
+export default MweetFactory;

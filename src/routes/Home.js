@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "fbase";
-import Nweet from "components/Nweet";
-import NweetFactory from "components/NweetFactory";
+import Mweet from "components/Mweet";
+import MweetFactory from "components/MweetFactory";
 import "styles/home.css";
 
 const Home = ({ userObj, darkMode }) => {
-  const [nweets, setNweets] = useState([]);
+  const [mweets, setMweets] = useState([]);
 
   useEffect(() => {
-    dbService.collection("nweets").onSnapshot((snapshot) => {
-      const nweetArray = snapshot.docs.map((doc) => ({
+    dbService.collection("mweets").onSnapshot((snapshot) => {
+      const mweetArray = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      setNweets(nweetArray);
+      setMweets(mweetArray);
     });
   }, []);
   return (
     <div className="container">
-      <NweetFactory userObj={userObj} darkMode={darkMode}/>
-      <ul className="nweets">
-        {nweets.map((nweet) => {
+      <MweetFactory userObj={userObj} darkMode={darkMode} />
+      <ul className="mweets">
+        {mweets.map((mweet) => {
           return (
-            <Nweet
-              key={nweet.id}
-              isOwner={nweet.creatorId === userObj.uid}
-              nweetObj={nweet}
+            <Mweet
+              key={mweet.id}
+              isOwner={mweet.creatorId === userObj.uid}
+              mweetObj={mweet}
               userObj={userObj}
               darkMode={darkMode}
             />

@@ -1,7 +1,6 @@
 import React from "react";
 import "styles/post.css";
 const Post = ({ post_item }) => {
-  console.log(post_item);
   return (
     <li className="post">
       <p className="date">
@@ -9,7 +8,7 @@ const Post = ({ post_item }) => {
       </p>
       <h4>{post_item.text}</h4>
       {post_item.attachmentUrl && (
-        <img className="post_img" src={post_item.attachmentUrl} alt="nweet" />
+        <img className="post_img" src={post_item.attachmentUrl} alt="mweet" />
       )}
       <div className="like_and_comment">
         <p className="like">

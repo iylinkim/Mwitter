@@ -35,7 +35,7 @@ const ToggleBtn = ({ darkMode, setDarkMode }) => {
         setDarkMode(darkMode);
         handleTheme(darkMode);
       }
-    }, []);
+    }, [setDarkMode]);
   return (
     <button className={darkMode ? "mode dark" : "mode"} onClick={onClick}>{darkMode ? "Light Mode" : "Dark Mode"}</button>
   );

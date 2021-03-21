@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import Comments from "./Comments";
 import { Link } from "react-router-dom";
-import "styles/nweet.css";
+import "styles/mweet.css";
 import User from "./User";
 
-const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
+const Mweet = ({ mweetObj, userObj, isOwner, darkMode }) => {
   const [editing, setEditing] = useState(false);
-  const [newNweet, setNewNweet] = useState(nweetObj.text);
+  const [newMweet, setNewMweet] = useState(mweetObj.text);
   const onDeleteClick = async () => {
-    const ok = window.confirm("Are you sure you want to delete this nweet?");
+    const ok = window.confirm("Are you sure you want to delete this mweet?");
     if (ok) {
-      //delete nweet
-      await dbService.doc(`nweets/${nweetObj.id}`).delete();
-      await storageService.refFromURL(nweetObj.attachmentUrl).delete();
+      //delete mweet
+      await dbService.doc(`mweets/${mweetObj.id}`).delete();
+      await storageService.refFromURL(mweetObj.attachmentUrl).delete();
     }
   };
 
@@ -21,7 +21,7 @@ const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.doc(`nweets/${nweetObj.id}`).update({ text: newNweet });
+    await dbService.doc(`mweets/${mweetObj.id}`).update({ text: newMweet });
     setEditing(false);
   };
 
@@ -29,30 +29,30 @@ const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
     const {
       target: { value },
     } = event;
-    setNewNweet(value);
+    setNewMweet(value);
   };
 
   const handleLike = () => {
-    if (!nweetObj.liked_users.includes(userObj.uid)) {
+    if (!mweetObj.liked_users.includes(userObj.uid)) {
       // like 버튼을 누르지 않았을 때
-      dbService.doc(`nweets/${nweetObj.id}`).update({
-        like: (nweetObj.like += 1),
-        liked_users: [...nweetObj.liked_users, userObj.uid],
+      dbService.doc(`mweets/${mweetObj.id}`).update({
+        like: (mweetObj.like += 1),
+        liked_users: [...mweetObj.liked_users, userObj.uid],
       });
     }
   };
 
   return (
-    <li className={darkMode ? "nweet dark" : "nweet"}>
+    <li className={darkMode ? "mweet dark" : "mweet"}>
       {editing ? (
         <>
-          <form onSubmit={onSubmit} className="container nweetEdit">
+          <form onSubmit={onSubmit} className="container mweetEdit">
             <input
               className="formInput"
               onChange={onChange}
               type="text"
-              placeholder="Edit your nweet"
-              value={newNweet}
+              placeholder="Edit your mweet"
+              value={newMweet}
               autoFocus
               required
             />
@@ -60,7 +60,7 @@ const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
               <input
                 className=" formBtn_text formBtn_text_update"
                 type="submit"
-                value="Update Nweet"
+                value="Update Mweet"
               />
               <span className="editing_icon update">
                 <i className="fas fa-pen"></i>
@@ -80,30 +80,30 @@ const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
             to={{
               pathname: "/account",
               state: {
-                userId: nweetObj.creatorId,
-                userName: nweetObj.username,
-                userPhoto: nweetObj.photoURL,
+                userId: mweetObj.creatorId,
+                userName: mweetObj.username,
+                userPhoto: mweetObj.photoURL,
               },
             }}
           >
-            <User nweetObj={nweetObj} />
+            <User mweetObj={mweetObj} />
           </Link>
           <p className="date">
-            {new Date(nweetObj.createdAt).toLocaleDateString()}
+            {new Date(mweetObj.createdAt).toLocaleDateString()}
           </p>
-          <h4 className="nweet_content">{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && (
-            <img src={nweetObj.attachmentUrl} alt="nweet" />
+          <h4 className="mweet_content">{mweetObj.text}</h4>
+          {mweetObj.attachmentUrl && (
+            <img src={mweetObj.attachmentUrl} alt="mweet" />
           )}
           <div className="like_and_comment">
             <p className="like" onClick={handleLike}>
               <i className="fas fa-heart"></i>
-              <span className="like_number">{nweetObj.like}</span>
+              <span className="like_number">{mweetObj.like}</span>
             </p>
-            <Comments nweetObj={nweetObj} userObj={userObj} />
+            <Comments mweetObj={mweetObj} userObj={userObj} />
           </div>
           {isOwner && (
-            <div className="nweet_actions">
+            <div className="mweet_actions">
               <span className="actions_icon delete" onClick={onDeleteClick}>
                 <i className="far fa-trash-alt delete_icon"></i>
                 delete
@@ -120,4 +120,4 @@ const Nweet = ({ nweetObj, userObj, isOwner, darkMode }) => {
   );
 };
 
-export default Nweet;
+export default Mweet;

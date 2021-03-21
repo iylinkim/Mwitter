@@ -1,4 +1,4 @@
-.nweet_user {
+.mweet_user {
   display: flex;
   align-items: center;
   padding-bottom: 10px;
@@ -26,8 +26,8 @@
   font-weight: 700;
 }
 
-.nweet_content{
-    padding:10px 0;
+.mweet_content {
+  padding: 10px 0;
 }
 
 .date {
@@ -56,7 +56,7 @@
   color: #333;
 }
 
-.nweet_actions {
+.mweet_actions {
   padding-top: 20px;
   font-size: 0.6rem;
   text-align: right;
@@ -103,7 +103,7 @@
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: rgba(122, 209, 192, 1);
-  color:rgba(255,255,255,0.8)
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .editing_icon.cancel {
@@ -111,24 +111,24 @@
 }
 
 /* dark mode  */
-.nweet.dark {
+.mweet.dark {
   background-color: #1f1e1e;
   color: #efefef;
 }
 
-.nweet.dark .user_name {
+.mweet.dark .user_name {
   color: #aaa;
 }
 
-.nweet.dark .like_number {
+.mweet.dark .like_number {
   color: #efefef;
 }
 
-.nweet.dark .comment_input,
-.nweet.dark .formInput {
+.mweet.dark .comment_input,
+.mweet.dark .formInput {
   background-color: #555;
 }
 
-.nweet.dark .formInput {
+.mweet.dark .formInput {
   color: #efefef;
 }
