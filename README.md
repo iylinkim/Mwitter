@@ -2,25 +2,9 @@
 
 Cloning Twitter by React and Firebase with new UI.
 
-## Screenshot
+## 🖥 Screenshot
 
-##### 1. login page
-
-<img width="350" alt="스크린샷 2021-03-21 오후 2 27 04" src="https://user-images.githubusercontent.com/66230563/111894967-b5624600-8a52-11eb-9e10-b7843f0cd090.png"/>
-
-##### 2. home page
-
-<img width="350" alt="스크린샷 2021-03-21 오후 2 41 10" src="https://user-images.githubusercontent.com/66230563/111895092-839daf00-8a53-11eb-87bc-f2a1638e4c82.png">
-
-##### 3. user's own post page
-
-<img width="350" alt="스크린샷 2021-03-21 오후 2 32 47" src="https://user-images.githubusercontent.com/66230563/111895120-bb0c5b80-8a53-11eb-91a5-da42cf870a87.png">
-
-##### 4. user profile page
-
-<img width="350" alt="스크린샷 2021-03-21 오후 2 30 17" src="https://user-images.githubusercontent.com/66230563/111895104-94e6bb80-8a53-11eb-9703-a10a3fb4b7dc.png">
-
-#
+![mwitter_layout](https://user-images.githubusercontent.com/66230563/111934385-a3d97680-8b04-11eb-9a58-75c498f20054.png)
 
 ## ⚒️ Technologies
 
@@ -31,6 +15,8 @@ Project is created with:
 - Cloud Firestore
 - HTML5
 - CSS
+
+#
 
 ## 📑 Descriptions
 
@@ -45,6 +31,8 @@ Project is created with:
 - Managing DB with Cloud Firestore
 - Real-Time posting
 - Dark mode
+
+#
 
 ## 🔥 Features
 
