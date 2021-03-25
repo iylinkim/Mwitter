@@ -4,7 +4,9 @@ Cloning Twitter by React and Firebase with new UI.
 
 ## 🖥 Screenshot
 
-![mwitter_layout](https://user-images.githubusercontent.com/66230563/111934385-a3d97680-8b04-11eb-9a58-75c498f20054.png)
+### [Demo](https://iylinkim.github.io/Mwitter)
+
+![vllo 2](https://user-images.githubusercontent.com/66230563/112421409-5104f680-8d72-11eb-8af1-8868e5675de4.gif)
 
 ## ⚒️ Technologies
 

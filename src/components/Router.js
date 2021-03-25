@@ -26,6 +26,7 @@ const AppRouter = ({
       body.classList.remove("dark");
     }
   }, [darkMode]);
+
   return (
     <Router>
       {isLoggedIn && <Navigation userObj={userObj} />}
