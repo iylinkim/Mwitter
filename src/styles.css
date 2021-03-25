@@ -1,8 +1,11 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
 
-
 * {
   box-sizing: border-box;
+}
+
+html, body, #root{
+  height:100%;
 }
 
 input {
@@ -226,7 +229,7 @@ form {
 }
 
 .authBtn {
-  width:49%;
+  width: 49%;
   cursor: pointer;
   border-radius: 20px;
   border: none;
@@ -237,17 +240,17 @@ form {
   cursor: pointer;
 }
 
-.authBtn_text{
-  padding-left:5px;
+.authBtn_text {
+  padding-left: 5px;
 }
 
-.fa-google{
-  font-size:14px;
-  color:rgba(40, 121, 226, 0.74);
+.fa-google {
+  font-size: 14px;
+  color: rgba(40, 121, 226, 0.74);
 }
-.fa-github{
-  font-size:14px;
-  color:rgba(0, 0, 0, 0.74);
+.fa-github {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.74);
 }
 
 /* AuthForm */
@@ -293,7 +296,61 @@ form {
   text-decoration: underline;
 }
 
+/* loading */
+.loading_body {
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(62, 62, 62, 0.3);
+}
 
+.loading_circle {
+  background: rgb(9, 164, 135);
+  background: linear-gradient(
+    90deg,
+    rgba(9, 164, 135, 1) 0%,
+    rgba(122, 209, 192, 1) 66%,
+    rgba(122, 209, 192, 1) 100%
+  );
+  width: 90px;
+  margin: 0 auto;
+  height: 90px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  position: absolute;
+}
+
+.loading_border {
+  width: 95px;
+  margin: 0 auto;
+  height: 95px;
+  border-radius: 50%;
+  border-top: 2px solid #7ad1c0;
+  position: absolute;
+  animation: spinning 1s linear infinite;
+}
+
+.loading_text{
+  position:absolute;
+  color:#fff;
+  font-size:0.7rem;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* dark mode */
 body.dark {
@@ -301,16 +358,16 @@ body.dark {
   color: #efefef;
 }
 
-.authInput.dark{
-  background-color:#1f1e1e;
-  color:#efefef;
+.authInput.dark {
+  background-color: #1f1e1e;
+  color: #efefef;
 }
 
-.authBtn.dark{
-  background-color:#555;
-  color:#efefef;
+.authBtn.dark {
+  background-color: #555;
+  color: #efefef;
 }
 
-.authBtn.dark > .fa-google{
-  color:rgba(40, 121, 226, 0.74);
+.authBtn.dark > .fa-google {
+  color: rgba(40, 121, 226, 0.74);
 }

@@ -31,7 +31,7 @@ function App({ ImageInput }) {
   };
 
   return (
-    <>
+    <div className={init ? "" : 'loading_body'}>
       {init ? (
         <AppRouter
           ImageInput={ImageInput}
@@ -41,9 +41,13 @@ function App({ ImageInput }) {
           setUserObj={setUserObj}
         />
       ) : (
-        "Initializing..."
+        <div className="loading">
+          <p className="loading_border"></p>
+          <p className="loading_circle"></p>
+          <p className="loading_text">Loading...</p>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 
